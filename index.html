@@ -9,7 +9,7 @@
 </head>
 <body>
     <nav class="navbar navbar-dark bg-dark">
-        <span class="navbar-brand w-100 text-center">Weather Dashboard</span>
+        <span style="font-size: 36px" class="navbar-brand w-100 text-center">Weather Dashboard</span>
     </nav>
 
 
@@ -17,20 +17,18 @@
         <div class="row">
           <div class="col-4 bg-light"> <!--bg = background-->
             <p class="search-header my-2">Search for a city</p> <!--my = margin, y (sets both top and bottom), and giving it the class search-header-->
-            <form class="form-inline">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn my-2 my-sm-0" type="submit">Search</button>
-            </form>  
+            <div class="input-group mb-3">
+              <input class="form-control mr-2" type="search" placeholder="Search City" aria-label="Search">
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="button" id="search-button"><i class="fas fa-search"></i>
+                </button>
+              </div> 
+            </div>
           </div>
         </div>
-
-        <div id="city-display" class="row">
-            <div class="col-md-8">
-
-            </div>
-        </div>
-
+        <!--CAN'T FIGURE OUT HOW TO GET SEARCH ICON IN BUTTON-->
     </div>
+
         
     <script src = "script.js"></script>
 </body>
