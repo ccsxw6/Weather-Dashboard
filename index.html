@@ -14,36 +14,29 @@
         <h1>Weather Dashboard</h1>
     </div>
     <div class="container mt-auto">
-        <!-- <div class="clearfix"> -->
-            <div class="col-4 float-left">
-                <nav class="navbar navbar-light bg-light shadow-lg p-3 mb-5 bg-white rounded">
-                    <h4>Search for a City:</h4>
-                        <form class="form-inline">
-                            <input id="userInput" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                            <button id="searchButton" class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
-                        </form> <!--used to be city-imput and select-city-->
-                    <form id="historySearch" class="mt-1"> <!--was id seachhistory-->
-                    </form>
-                </nav>
-            </div>
-
-            <div class="col-8 float-right">
-                <div class="card bg-light text-dark p-2 rem shadow-lg p-3 mb-5 bg-white rounded" style="width: 710; height: 19rem;">
-                    <div id="current-weather"></div> <!--was just id current-->
-   
-                    <div id="uvi"></div> <!--was uvl-display-->
-                </div>
-                    <br>
-                    <h2>5-Day Forcast:</h2>
-                    <div  id="fiveForecast" class="row"></div> <!--was id 5day-->
-                </div> 
+        <div class="col-4 float-left">
+            <nav class="navbar navbar-light bg-light shadow-lg p-3 mb-5 bg-white rounded">
+                <h4>Search for a City:</h4>
+                    <form class="form-inline">
+                        <input id="userInput" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button id="searchButton" class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+                    </form> 
+                <form id="historySearch" class="mt-1"></form>
+            </nav>
         </div>
+
+        <div class="col-8 float-right">
+            <div class="card bg-light text-dark p-2 rem shadow-lg p-3 mb-5 bg-white rounded" style="width: 710; height: 19rem;">
+                <div id="current-weather"></div> 
+                <div id="uvi"></div>
+            </div>
+            </br>
+                <h2>5-Day Forcast:</h2>
+                <div  id="fiveForecast" class="row"></div>
+            </div> 
     </div>
   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script type="text/javascript" src="script.js"></script>
-  </body>
-</html>
 </body>
 </html>
