@@ -6,5 +6,8 @@ This a project that gives the user the weather forecast for the city that they t
 ## Mock Up
 ![Page Image](dashboardImage.PNG)
 
+## Technologies Used
+HTML, CSS, JavaScript, API
+
 ## Deployment
 https://ccsxw6.github.io/Weather-Dashboard/
