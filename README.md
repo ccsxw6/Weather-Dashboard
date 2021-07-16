@@ -14,5 +14,6 @@ https://ccsxw6.github.io/Weather-Dashboard/
 - CSS (Bootstrap)
 - JavaScript
 - OpenWeather API
+- Moment.js
 - Local Storage
 

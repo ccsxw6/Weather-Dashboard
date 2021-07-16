@@ -4,16 +4,17 @@ $(document).ready(function() {
 
         var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + nameOfCity + "&units=imperial&appid=9c596b570aec8a175e86b3272dcaa420";
         
+        // get request to the queryURL
         $.ajax({
           url: queryURL,
-            method: 'GET'
+          method: 'GET'
           }).then(function (response) {
-            console.log(response);
+            // console.log(response);
             
-           $("#currentDate").empty();
-           var firstDate = moment().format('L');
-           console.log(firstDate)
-           
+          // where is currentDate?
+          $("#currentDate").empty();
+           // format eg 07/16/2021
+          var firstDate = moment().format('L');
     
           var cityHeader = $("<h2>").text(response.name);
           var displayfirstDate = cityHeader.append(" " + firstDate);
@@ -21,7 +22,8 @@ $(document).ready(function() {
           var tempP = $("<p>").text("Tempraturer: " + response.main.temp);
           var humidityP = $("<p>").text("Humidity: " + response.main.humidity);
           var currentWeather = response.weather[0].main;
-    
+            
+          // adding images to correlate with the weather
           if (currentWeather === "Rain") {
               var currentIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/09d.png");
                 currentIcon.attr("style", "height: 60px; width: 60px");
@@ -43,41 +45,42 @@ $(document).ready(function() {
                 currentIcon.attr("style", "height: 60px; width: 60px");
               }
               
-              
               var newDiv = $('<div>');
               newDiv.append(displayfirstDate, currentIcon, tempP, humidityP, windP);
               $("#current-weather").html(newDiv);
               
-              
+              // using another url to retrieve the UV Index
               var lat = response.coord.lat;
               var lon = response.coord.lon;
               var uviQuery = "https://api.openweathermap.org/data/2.5/uvi?&appid=9c596b570aec8a175e86b3272dcaa420&lat=" + lat  + "&lon=" + lon;
               
+
+              // GET Request for the uv index, and appending that as a button to #uvi
               $.ajax({
                 url: uviQuery,
                 method: 'GET'
               }).then(function (response) {
+                // console.log(response)
                 $("#uvi").empty();
                 var uvlEl = $("<button class='btn bg-success'>").html("UV Index: " + response.value);
                 $('#uvi').html(uvlEl);
-                
               });
             });
             
-            
-            
+        // url for 5 day forecast
         var queryForecast = "https://api.openweathermap.org/data/2.5/forecast?q=" + nameOfCity + "&units=imperial&appid=9c596b570aec8a175e86b3272dcaa420";
-        
+        // get request for the 5 day forecast
         $.ajax({
             url: queryForecast,
             method: 'GET'
         }).then(function (response) {
             console.log(response)
+            // accessing list from response, which holds the forecast for every 3 hours
             var results = response.list;
             $("#fiveForecast").empty();
+            // setting i to increment by 8, we want the weather from the same time every day
             for (var i = 0; i < results.length; i += 8) {
                 var fiveDayDiv = $("<div class='card shadow-lg text-white bg-primary mx-auto mb-10 p-2' style='width: 8.5rem; height: 11rem;'>");
-                
                 
                 var temp = results[i].main.temp;
                 var hum = results[i].main.humidity;
@@ -116,12 +119,12 @@ $(document).ready(function() {
                 fiveDayDiv.append(humidityTag);
                 $("#fiveForecast").append(fiveDayDiv);
             }
-    
         });
-    
     }
+    // first function call - retrieves last stored city search
     storedItems();
-    
+
+    // click event on the search button
     $("#searchButton").on("click", function (event) {
         event.preventDefault();
         var cityInput = $("#userInput").val().trim();
@@ -134,7 +137,6 @@ $(document).ready(function() {
         storedItems();
     });
     
-    
     function storedItems () {
         var lastSearch = JSON.parse(localStorage.getItem("cityName"));
         var searchDiv = $("<button class='btn border text-muted mt-1 shadow-sm bg-white rounded' style='width: 12rem;'>").text(lastSearch);
@@ -146,7 +148,6 @@ $(document).ready(function() {
     $("#historySearch").on('click', '.btn', function(event) {
         event.preventDefault();
         citysearch($(this).text());
-    
     });
 })
 
